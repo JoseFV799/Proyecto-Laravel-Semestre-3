@@ -7,7 +7,7 @@
         <div class="col-md-8">
             <div class="card">
                 <img 
-                    src="{{ url($post->image) }}" 
+                    src="{{ Storage::url($post->image) }}" 
                     alt="..."
                     class="card-img-top">
                 <div class="card-body">
