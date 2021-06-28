@@ -50,5 +50,12 @@
             </div>
         </div>
     @endforeach
+    <div class="row align-items-center h-100 mt-2">
+        <div class="col-md-8 mx-auto">
+            @if (count($posts) === 10)
+            {{ $posts->links() }} 
+            @endif
+        </div>
+    </div>
 </div>
 @endsection

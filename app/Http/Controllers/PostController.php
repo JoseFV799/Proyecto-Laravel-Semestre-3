@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use Jenssegers\Mongodb\Eloquent;
 use Jenssegers\Mongodb\Query\Builder;
+use Illuminate\Support\Facades\Storage;
+
 
 class PostController extends Controller
 {
@@ -17,7 +19,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -43,9 +45,10 @@ class PostController extends Controller
         $title = $request->get('title');
         $content = $request->get('content');
 
+        Storage::makeDirectory('public/posts');
         $post = $request->user()->posts()->create([
             'title' => $title,
-            'image' => 'img/' . $imageName,
+            'image' => 'app/public/' . $imageName,
             'content' => $content,
         ]);
 

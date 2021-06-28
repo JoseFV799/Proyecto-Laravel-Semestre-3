@@ -32,8 +32,7 @@ Route::delete('/posts/{id}', [PostController::class, 'eliminar']);
 Route::view('/user/modify', 'users.modifyUser');
 Route::get('/user/modify/{id}', [UserController::class, 'ModifyUser'])->name('ModifyUser');
 Route::get('/user/deleteUser', [UserController::class, 'DeleteUser'])->name('DeleteUser');
-
-
+Route::get('/notificaciones',[CommentController::class,'notificaciones']);
 Auth::routes();
 
 Route::get(
